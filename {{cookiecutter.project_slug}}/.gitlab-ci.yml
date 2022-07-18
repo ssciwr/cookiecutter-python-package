@@ -1,0 +1,16 @@
+.template: &template
+  script:
+    - python -m pip install .[tests]
+    - python -m pytest
+
+test-{{ cookiecutter|modname }}-python3.8:
+  image: python:3.8
+  <<: *template
+
+test-{{ cookiecutter|modname }}-python3.9:
+  image: python:3.9
+  <<: *template
+
+test-{{ cookiecutter|modname }}-python3.10:
+  image: python:3.10
+  <<: *template

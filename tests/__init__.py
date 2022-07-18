@@ -1,4 +1,6 @@
 import os
+import time
+
 from contextlib import contextmanager
 
 
@@ -9,7 +11,7 @@ def inside_bake(bake):
     """
     old_path = os.getcwd()
     try:
-        os.chdir(os.path.join(bake.project.dirpath(), bake.project.basename))
+        os.chdir(str(bake.project_path))
         yield
     finally:
         os.chdir(old_path)
@@ -19,4 +21,9 @@ def check_bake(bake):
     if bake.exception:
         raise bake.exception
     assert bake.exit_code == 0
-    assert bake.project.isdir()
+    assert bake.project_path.is_dir()
+
+
+def wait_five_seconds(*args):
+    time.sleep(5)
+    return True

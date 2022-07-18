@@ -54,10 +54,11 @@ def conditional_remove(condition, path):
 
 
 conditional_remove("{{ cookiecutter.license }}" == "None", "LICENSE.md")
+conditional_remove("{{ cookiecutter.github_actions_ci }}" == "No", ".github")
+conditional_remove("{{ cookiecutter.gitlab_ci }}" == "No", ".gitlab-ci.yml")
 conditional_remove(not {{ have_precommit }}, ".pre-commit-config.yaml")
 conditional_remove(os.stat("TODO.md").st_size == 0, "TODO.md")
 {% raw %}
-#conditional_remove("{{ cookiecutter.gitlab_ci }}" == "No", ".gitlab-ci.yml")
 #conditional_remove("{{ cookiecutter.readthedocs }}" == "No", ".readthedocs.yml")
 #conditional_remove("{{ cookiecutter.readthedocs }}" == "No", "doc")
 #conditional_remove("{{ cookiecutter.pypi_release }}" != "Yes", ".github/workflows/pypi.yml")
