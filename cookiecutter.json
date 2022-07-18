@@ -4,5 +4,8 @@
     "project_slug": "{%- if cookiecutter.remote_url == 'None' -%}{{ cookiecutter.project_name|replace('+', 'p')|slugify }}{% else %}{{ cookiecutter.remote_url.split('/')[-1]|replace('.git', '')}}{%- endif -%}",
     "full_name": "Your Name",
     "license": ["MIT", "BSD-2", "GPL-3.0", "LGPL-3.0", "None"],
-    "_cibuildwheel_version": "1.11.1"
+    "_extensions": [
+        "local_extensions.PrecommitExtension",
+        "local_extensions.ShortcutExtension"
+    ]
 }

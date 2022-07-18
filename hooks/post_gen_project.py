@@ -11,8 +11,6 @@ import sys
 from cookiecutter.utils import rmtree
 
 
-
-# A context manager that allows modifying the creation of a Git repository
 class GitRepository(object):
     """ A context for the setup of a Git repository """
     def __init__(self):
@@ -27,7 +25,14 @@ class GitRepository(object):
     def __exit__(self, exc_type, exc_val, exc_tb):
         # Finalize by making an initial git commit
         subprocess.check_call("git add *".split())
+
+        # Maybe run pre-commit
+        if {{ have_precommit }}:
+            subprocess.call("pre-commit run -a".split())
+            subprocess.check_call("git add *".split())
+
         subprocess.check_call(["git", "commit", "-m", "Initial Commit"])
+
 
     def add_remote(self, name, url):
         if self.remotes.get(name, url) != url:
@@ -38,15 +43,6 @@ class GitRepository(object):
             self.remotes[name] = url
             subprocess.check_call(["git", "remote", "add", name, url])
 
-    def add_submodule(self, url, location, branch=None, tag=None):
-        command = ["git", "submodule", "add"]
-        if branch is not None:
-            command = command + ["-b", branch]
-        command = command + [url, location]
-        subprocess.check_call(command)
-        if tag is not None:
-            subprocess.check_call(["git", "checkout", tag], cwd=os.path.join(os.getcwd(), *os.path.split(location)))
-
 
 # Optionally remove files whose existence is tied to disabled features
 def conditional_remove(condition, path):
@@ -54,22 +50,31 @@ def conditional_remove(condition, path):
         if os.path.isfile(path):
             os.remove(path)
         else:
-            # cookiecutter.utils.rmtree is used instead of shutil.rmtree to increase
-            # the portability to Windows systems where rmtree behaves differently.
             rmtree(path)
 
 
 conditional_remove("{{ cookiecutter.license }}" == "None", "LICENSE.md")
+conditional_remove(not {{ have_precommit }}, ".pre-commit-config.yaml")
+conditional_remove(os.stat("TODO.md").st_size == 0, "TODO.md")
+{% raw %}
+#conditional_remove("{{ cookiecutter.gitlab_ci }}" == "No", ".gitlab-ci.yml")
+#conditional_remove("{{ cookiecutter.readthedocs }}" == "No", ".readthedocs.yml")
+#conditional_remove("{{ cookiecutter.readthedocs }}" == "No", "doc")
+#conditional_remove("{{ cookiecutter.pypi_release }}" != "Yes", ".github/workflows/pypi.yml")
+#conditional_remove("{{ cookiecutter.codecovio }}" == "No", "codecov.yml")
+#conditional_remove("{{ cookiecutter.sonarcloud }}" == "No", "sonar-project.properties")
+#conditional_remove("{{ cookiecutter.sonarcloud }}" == "No", ".github/workflows/sonarcloud.yml")
+#conditional_remove("{{ cookiecutter.github_actions_ci }}" == "No", ".github")
+{% endraw %}
 
-
-# Finalize the Git setup
+# Set up a Git repository
+{% if cookiecutter.remote_url != 'None' %}
 with GitRepository() as repo:
-    if "{{ cookiecutter.remote_url }}"  != "None":
-        repo.add_remote("origin", "{{ cookiecutter.remote_url }}")
-
+    repo.add_remote("origin", "{{ cookiecutter.remote_url }}")
+{% endif %}
 
 # Print a message about success
-print("The project cookiecutter-python-project was successfully generated!")
+print("The project {{ cookiecutter.project_slug }} was successfully generated!")
 print("The file FILESTRUCTURE.md describes the purpose and content of all the generated files.")
 if os.path.exists("TODO.md"):
     print("A TODO list for you to finalize the generation process was also generated, see TODO.md.")

@@ -1,18 +1,22 @@
 # Welcome to Python Package Cookiecutter!
 
 This repository is a template repository (a cookiecutter) that allows you to quickly
-set up new Python packages.
+set up new Python packages. It is geared towards scientific applications and implements
+the best practice guidelines of the [Scientific Software Center of Heidelberg University](https://ssc.iwr.uni-heidelberg.de).
 
 # Features
 
 * Very simple, configurable setup of a fully functional project
-* Based on an established tool: [Cookiecutter](https://github.com/cookiecutter/cookiecutter) has >13k stars on Github!
+* Modern metadata specification using `pyproject.toml`
+* Based on an established tool: [Cookiecutter](https://github.com/cookiecutter/cookiecutter) has >17k stars on Github!
+
+If your Python package contains compiled C++ modules, you might want to check out our [C++ Cookiecutter with Pybind11 bindings](https://github.com/ssciwr/cookiecutter-cpp-project) instead.
 
 # Prerequisites
 
 In order to use Python Package Cookiecutter you need the following software installed:
 
-* Python `>= 3.6`
+* Python `>= 3.8`
 * [Cookiecutter](https://github.com/cookiecutter/cookiecutter) e.g. by doing `pip install cookiecutter`.
 * Git `>= 1.8.2`
 
@@ -21,7 +25,7 @@ In order to use Python Package Cookiecutter you need the following software inst
 Simply run the cookiecutter command line interface:
 
 ```
-cookiecutter gh:ssciwr/cookiecutter-python-project
+cookiecutter gh:ssciwr/cookiecutter-python-package
 ```
 
 This will start an interactive prompt that will configure and generate your project.
@@ -40,11 +44,11 @@ This cookiecutter accepts the following configuration options:
 * `full_name`: Author name, defaults to `Your Name`
 * `license` adds a license file to the repository. It can be chosen from [MIT](https://opensource.org/licenses/MIT) (default), [BSD-2](https://opensource.org/licenses/BSD-2-Clause), [GPL-3.0](https://opensource.org/licenses/GPL-3.0), [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0) or it can be omitted.
 
-If you are using `cookiecutter-python-project` a lot, you can customize your default values
+If you are using `cookiecutter-python-package` a lot, you can customize your default values
 by providing a `.cookiecutterrc` file in your home directory, for more details see the
 [cookiecutter documentation](https://cookiecutter.readthedocs.io/en/latest/advanced/user_config.html).
 
 # Issues
 
 Please report any issues you might have with template using [the Github issue
-tracker](https://github.com/ssciwr/cookiecutter-python-project)
+tracker](https://github.com/ssciwr/cookiecutter-python-package)
