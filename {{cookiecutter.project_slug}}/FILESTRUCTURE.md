@@ -25,6 +25,20 @@ This is an explanation of the file structure that the cookiecutter generated for
     In the future, `setuptools` will support editable builds purely from `pyproject.toml`
     configuration.
 * Configuration for CI/Code Analysis and documentation services
+{%- if cookiecutter.github_actions_ci %}
+  * `.github/workflows/ci.yml` describes the Github Workflow for Continuous
+    integration. For further reading on workflow files, we recommend the
+    [introduction into Github Actions](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions)
+    and [the reference of available options](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions).
+  * `.github/dependabot.yml` configures the DependaBot integration on GitHub that
+    allows you to automatically create pull requests for updates of the used actions
+    in `.github/workflows/ci.yml`.
+{%- endif %}
+{%- if cookiecutter.gitlab_ci %}
+  * `.gitlab-ci.yml` describes the configuration for Gitlab CI. For further
+    reading, we recommend [Gitlabs quick start guide](https://docs.gitlab.com/ee/ci/quick_start/)
+    and the [Gitlab CI configuration reference](https://docs.gitlab.com/ce/ci/yaml/)
+{%- endif %}
 {%- if have_precommit %}
   * `.pre-commit-config.yaml` contains a configuration for the [pre-commit](https://pre-commit.com/)
     tool. It was added because the `pre-commit` tool was found in your Python environment.
