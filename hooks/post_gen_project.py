@@ -65,7 +65,6 @@ conditional_remove(os.stat("TODO.md").st_size == 0, "TODO.md")
 #conditional_remove("{{ cookiecutter.codecovio }}" == "No", "codecov.yml")
 #conditional_remove("{{ cookiecutter.sonarcloud }}" == "No", "sonar-project.properties")
 #conditional_remove("{{ cookiecutter.sonarcloud }}" == "No", ".github/workflows/sonarcloud.yml")
-#conditional_remove("{{ cookiecutter.github_actions_ci }}" == "No", ".github")
 {% endraw %}
 
 # Set up a Git repository

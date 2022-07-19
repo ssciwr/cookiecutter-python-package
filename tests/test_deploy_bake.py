@@ -1,4 +1,5 @@
 import github
+import gitlab
 import os
 import pytest
 import subprocess
@@ -51,23 +52,23 @@ def test_github_actions_ci_on_deployed_bake():
     check_workflow("ci.yml")
 
 
-# @pytest.mark.integrations
-# @pytest.mark.flaky(max_runs=3, min_passes=1, rerun_filter=wait_five_seconds)
-# @pytest.mark.timeout(300)
-# def test_gitlab_ci_on_deployed_bake():
-#     # Authenticate with Gitlab API
-#     gl = gitlab.Gitlab('https://gitlab.com', private_token=os.getenv("GL_API_ACCESS_TOKEN"))
-#     gl.auth()
+@pytest.mark.integrations
+@pytest.mark.flaky(max_runs=3, min_passes=1, rerun_filter=wait_five_seconds)
+@pytest.mark.timeout(300)
+def test_gitlab_ci_on_deployed_bake():
+    # Authenticate with Gitlab API
+    gl = gitlab.Gitlab('https://gitlab.com', private_token=os.getenv("GL_API_ACCESS_TOKEN"))
+    gl.auth()
 
-#     # Find the correct Gitlab pipeline - after giving it 2 seconds to properly initiate
-#     project = gl.projects.get('dokempf/test-gitlab-ci-cookiecutter-cpp-project')
-#     pipeline = project.pipelines.list()[0]
-#     branch = project.branches.get('main')
-#     assert pipeline.sha == branch.commit['id']
+    # Find the correct Gitlab pipeline - after giving it 2 seconds to properly initiate
+    project = gl.projects.get('dokempf/test-gl-python-package')
+    pipeline = project.pipelines.list()[0]
+    branch = project.branches.get('main')
+    assert pipeline.sha == branch.commit['id']
 
-#     # Poll the pipeline status
-#     while pipeline.status != 'success':
-#         time.sleep(5)
-#         pipeline.refresh()
-#         if pipeline.status in ["failed", "canceled", "skipped"]:
-#             pytest.fail("The Gitlab API reported Status '{}' while we were waiting for 'success'".format(pipeline.status))
+    # Poll the pipeline status
+    while pipeline.status != 'success':
+        time.sleep(5)
+        pipeline.refresh()
+        if pipeline.status in ["failed", "canceled", "skipped"]:
+            pytest.fail("The Gitlab API reported Status '{}' while we were waiting for 'success'".format(pipeline.status))
