@@ -8,7 +8,8 @@
     "gitlab_ci": ["Yes", "No"],
     "_extensions": [
         "local_extensions.PrecommitExtension",
-        "local_extensions.ShortcutExtension"
+        "local_extensions.ShortcutExtension",
+        "local_extensions.CurrentDateExtension"
     ],
     "__modname": "{{ cookiecutter|modname }}"
 }
