@@ -1,5 +1,6 @@
 # Welcome to {{ cookiecutter.project_name }}
 
+{# The white-space control of the below template is quite delicate - if you add one, do it exactly like this (mind the -'s) -#}
 {% if cookiecutter.license == "MIT" -%}
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 {% endif -%}
@@ -12,4 +13,47 @@
 {% if cookiecutter.license == "LGPL-3.0" -%}
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 {% endif -%}
+{% if cookiecutter.remote_url != "None" -%}
+{% if cookiecutter.github_actions_ci == "Yes" and cookiecutter|is_github -%}
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/{{ cookiecutter|username }}/{{ cookiecutter|remote_slug }}/CI)](https://github.com/{{ cookiecutter|username }}/{{ cookiecutter|remote_slug }}/actions?query=workflow%3ACI)
+{% endif -%}
+{% if cookiecutter.gitlab_ci == "Yes" and cookiecutter|is_gitlab -%}
+[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/{{ cookiecutter|username }}/{{ cookiecutter|remote_slug }}/main
+{%- if "gitlab.com" not in cookiecutter.remote_url -%}
+?gitlab_url={{ cookiecutter|gitlab_instance }}
+{%- endif -%}
+)]({{ cookiecutter|gitlab_instance }}/{{ cookiecutter|username }}/{{ cookiecutter|remote_slug }}/-/pipelines)
+{% endif -%}
+{% endif -%}
 {{ "\n" -}}
+
+## Installation
+
+The Python packaage `{{ cookiecutter|modname }}` can be installed from PyPI:
+
+```
+python -m pip install {{ cookiecutter|modname }}
+```
+
+## Development installation
+
+If you want to contribute to the development of `{{ cookiecutter|modname }}`, we recommend
+the following editable installation from this repository:
+
+```
+{%- if cookiecutter.remote_url != "None" %}
+git clone {{ cookiecutter.remote_url }}
+cd {{ cookiecutter.project_slug }}
+{%- endif %}
+python -m pip install --editable .[tests]
+```
+
+Having done so, the test suite can be run using `pytest`:
+
+```
+python -m pytest
+```
+
+## Acknowledgments
+
+This repository was set up using the [SSC Cookiecutter for Python Packages](https://github.com/ssciwr/cookiecutter-python-package).
