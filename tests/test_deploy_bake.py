@@ -86,7 +86,7 @@ def test_readthedocs_deploy():
 
     def rtd_api_request(endpoint):
         response = requests.get(
-            'https://readthedocs.org/api/v3/projects/test-gha-cookiecutter/{}'.format(endpoint),
+            'https://readthedocs.org/api/v3/projects/test-gha-python-package/{}'.format(endpoint),
             headers={'Authorization': 'token {}'.format(os.getenv('RTD_API_ACCESS_TOKEN'))}
         )
         return response.json()
