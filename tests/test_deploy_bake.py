@@ -2,6 +2,7 @@ import github
 import gitlab
 import os
 import pytest
+import requests
 import subprocess
 import time
 
@@ -72,3 +73,32 @@ def test_gitlab_ci_on_deployed_bake():
         pipeline.refresh()
         if pipeline.status in ["failed", "canceled", "skipped"]:
             pytest.fail("The Gitlab API reported Status '{}' while we were waiting for 'success'".format(pipeline.status))
+
+
+@pytest.mark.integrations
+@pytest.mark.flaky(max_runs=3, min_passes=1, rerun_filter=wait_five_seconds)
+@pytest.mark.timeout(300)
+def test_readthedocs_deploy():
+    # Authenticate with the Github API to get the upstream commit
+    gh = github.Github(os.getenv("GH_API_ACCESS_TOKEN"))
+    repo = gh.get_repo('dokempf/test-gha-python-package')
+    sha = repo.get_branch('main').commit.sha
+
+    def rtd_api_request(endpoint):
+        response = requests.get(
+            'https://readthedocs.org/api/v3/projects/test-gha-cookiecutter/{}'.format(endpoint),
+            headers={'Authorization': 'token {}'.format(os.getenv('RTD_API_ACCESS_TOKEN'))}
+        )
+        return response.json()
+
+    # Check that the build has the correct commit
+    last_build_id = rtd_api_request("versions/latest/builds")["results"][0]["id"]
+    build = rtd_api_request('builds/{}'.format(last_build_id))
+
+    # Wait until the build has finished
+    while build['state']['code'] != 'finished':
+        time.sleep(5)
+        build = rtd_api_request('builds/{}'.format(last_build_id))
+
+    assert build['success']
+    assert build["commit"] == sha
