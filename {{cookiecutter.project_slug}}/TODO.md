@@ -12,3 +12,6 @@ The following tasks need to be done to get a fully working project:
   use settings at `https://pypi.org`. Note that currently, you have to create an unscoped token
   for your first upload and only after that you can create a new token whose scope is restricted
   to the current project.
+* Enable the integration of Readthedocs with your Git hoster. In the case of Github, this means
+  that you need to login at [Read the Docs](https://readthedocs.org) and click the button
+  *Import a Project*.
