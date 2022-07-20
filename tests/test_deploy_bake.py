@@ -79,6 +79,9 @@ def test_gitlab_ci_on_deployed_bake():
 @pytest.mark.flaky(max_runs=3, min_passes=1, rerun_filter=wait_five_seconds)
 @pytest.mark.timeout(300)
 def test_readthedocs_deploy():
+    # We need to wait a bit, because otherwise the build has not finished
+    time.sleep(60)
+
     # Authenticate with the Github API to get the upstream commit
     gh = github.Github(os.getenv("GH_API_ACCESS_TOKEN"))
     repo = gh.get_repo('dokempf/test-gha-python-package')
