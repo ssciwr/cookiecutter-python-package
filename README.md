@@ -11,6 +11,8 @@ the best practice guidelines of the [Scientific Software Center of Heidelberg Un
 * Very simple, configurable setup of a fully functional project
 * Modern metadata specification using `pyproject.toml`
 * Based on an established tool: [Cookiecutter](https://github.com/cookiecutter/cookiecutter) has >17k stars on Github!
+* CI/CD configurations using Github Actions or Gitlab CI
+* Sphinx documentation deployed to [readthedocs.org](https://readthedocs.org)
 
 If your Python package contains compiled C++ modules, you might want to check out our [C++ Cookiecutter with Pybind11 bindings](https://github.com/ssciwr/cookiecutter-cpp-project) instead.
 
@@ -45,6 +47,8 @@ This cookiecutter accepts the following configuration options:
 * `project_slug`: This will be the name of the generated directory.By default, it is deduced from the specified remote URL and the given project name.
 * `full_name`: Author name, defaults to `Your Name`
 * `license` adds a license file to the repository. It can be chosen from [MIT](https://opensource.org/licenses/MIT) (default), [BSD-2](https://opensource.org/licenses/BSD-2-Clause), [GPL-3.0](https://opensource.org/licenses/GPL-3.0), [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0) or it can be omitted.
+* `github_actions_ci`: Whether to add CI/CD workflows for Github Actions
+* `gitlab_ci`: Whether to add a CI workflow for GitLab CI
 
 If you are using `cookiecutter-python-package` a lot, you can customize your default values
 by providing a `.cookiecutterrc` file in your home directory, for more details see the
