@@ -35,7 +35,11 @@ classifiers = [
     "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
 {%- endif %}
 ]
-dependencies = []
+dependencies = [
+{%- if cookiecutter.commandlineinterface == "Yes" %}
+    "click",
+{%- endif %}
+]
 
 [project.optional-dependencies]
 tests = [
@@ -47,6 +51,11 @@ docs = [
     "sphinx",
     "sphinx_rtd_theme",
 ]
+{% if cookiecutter.commandlineinterface == "Yes" %}
+# Command line scripts installed as part of the installation
+[project.scripts]
+{{ cookiecutter|modname }} = "{{ cookiecutter|modname }}.__main__:main"
+{%- endif%}
 
 # The following section contains setuptools-specific configuration
 # options. For a full reference of available options, check the overview

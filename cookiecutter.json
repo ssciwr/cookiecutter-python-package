@@ -6,6 +6,7 @@
     "license": ["MIT", "BSD-2", "GPL-3.0", "LGPL-3.0", "None"],
     "github_actions_ci": ["Yes", "No"],
     "gitlab_ci": ["Yes", "No"],
+    "commandlineinterface": ["No", "Yes"],
     "_extensions": [
         "local_extensions.PrecommitExtension",
         "local_extensions.ShortcutExtension",
