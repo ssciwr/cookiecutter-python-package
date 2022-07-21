@@ -58,6 +58,8 @@ conditional_remove("{{ cookiecutter.github_actions_ci }}" == "No", ".github")
 conditional_remove("{{ cookiecutter.github_actions_ci }}" == "No", "codecov.yml")
 conditional_remove("{{ cookiecutter.gitlab_ci }}" == "No", ".gitlab-ci.yml")
 conditional_remove(not {{ have_precommit }}, ".pre-commit-config.yaml")
+conditional_remove("{{ cookiecutter.commandlineinterface }}" == "No", "{{ cookiecutter|modname }}/__main__.py")
+conditional_remove("{{ cookiecutter.commandlineinterface }}" == "No", "tests/test_cli.py")
 conditional_remove(os.stat("TODO.md").st_size == 0, "TODO.md")
 
 # Set up a Git repository

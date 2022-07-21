@@ -1,8 +1,14 @@
 This is an explanation of the file structure that the cookiecutter generated for you:
 
 * Python source files:
-  * The Python package source files are located in the `{{ cookiecutter.project_slug }}` directory.
-  * `tests/test_{{ cookiecutter.project_slug }}.py` contains the unit tests for the package.
+  * The Python package source files are located in the `{{ cookiecutter|modname }}` directory.
+{%- if cookiecutter.commandlineinterface == "Yes" %}
+  * The file `{{ cookiecutter|modname }}.__main__.py` defines a command line interface that
+    is accessible both as the command `{{ cookiecutter|modname }}` and via
+    `python -m {{ cookiecutter|modname }}`.
+  * `tests/test_cli.py` contains rudimentary testing of this CLI.
+{%- endif %}
+  * `tests/test_{{ cookiecutter|modname }}.py` contains the unit tests for the package.
   * `tests/conftest.py` contains testing setup and configuration for `pytest`
 * Markdown files with meta information on the project. [Markdown](https://www.markdownguide.org/basic-syntax/) is
   a good language for these files, as it is easy to write and rendered into something beautiful by your git repository
