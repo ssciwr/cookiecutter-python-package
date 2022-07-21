@@ -90,6 +90,7 @@ jobs:
 
     - name: Run tests for upstream integrations
       env:
+        CODECOV_GH_API_ACCESS_TOKEN: ${{ secrets.CODECOV_GH_API_ACCESS_TOKEN }}
         GH_API_ACCESS_TOKEN: ${{ secrets.GH_API_ACCESS_TOKEN }}
         GL_API_ACCESS_TOKEN: ${{ secrets.GL_API_ACCESS_TOKEN }}
       run: |
