@@ -40,7 +40,7 @@ the Git hosting service of your choice and add a new empty repository e.g. [on G
 
 This cookiecutter accepts the following configuration options:
 
-* `project_name`: The human-readable name of the project, defaults to `My C++ Project`
+* `project_name`: The human-readable name of the project, defaults to `My Project`
 * `remote_url`: The remote URL for the newly created repository. This is not only used
   to add it as a remote to the Git repository, but also to enable integration with some
   services. Defaults to `None` although we strongly advise you to specify it.
