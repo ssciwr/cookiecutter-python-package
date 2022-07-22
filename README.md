@@ -1,7 +1,5 @@
 # Welcome to Python Package Cookiecutter!
 
-** We are currently actively developing this - you might encounter issues using it **
-
 This repository is a template repository (a cookiecutter) that allows you to quickly
 set up new Python packages. It is geared towards scientific applications and implements
 the best practice guidelines of the [Scientific Software Center of Heidelberg University](https://ssc.iwr.uni-heidelberg.de).
