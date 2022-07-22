@@ -50,6 +50,9 @@ tests = [
 {%- endif %}
 ]
 docs = [
+{%- if cookiecutter.notebooks == "Yes" %}
+    "ipykernel",
+{%- endif %}
     "m2r2",
 {%- if cookiecutter.notebooks == "Yes" %}
     "nbsphinx",
