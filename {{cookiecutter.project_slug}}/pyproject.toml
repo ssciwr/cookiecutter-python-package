@@ -45,9 +45,19 @@ dependencies = [
 tests = [
     "pytest",
     "pytest-cov",
+{%- if cookiecutter.notebooks == "Yes" %}
+    "nbval",
+{%- endif %}
 ]
 docs = [
+{%- if cookiecutter.notebooks == "Yes" %}
+    "ipykernel",
+{%- endif %}
     "m2r2",
+{%- if cookiecutter.notebooks == "Yes" %}
+    "nbsphinx",
+    "nbsphinx-link",
+{%- endif %}
     "sphinx",
     "sphinx_rtd_theme",
 ]
@@ -69,4 +79,7 @@ packages = [
 [tool.pytest.ini_options]
 testpaths = [
     "tests",
+{%- if cookiecutter.notebooks == "Yes" %}
+    "notebooks",
+{%- endif %}
 ]

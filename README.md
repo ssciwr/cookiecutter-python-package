@@ -49,6 +49,9 @@ This cookiecutter accepts the following configuration options:
 * `license` adds a license file to the repository. It can be chosen from [MIT](https://opensource.org/licenses/MIT) (default), [BSD-2](https://opensource.org/licenses/BSD-2-Clause), [GPL-3.0](https://opensource.org/licenses/GPL-3.0), [LGPL-3.0](https://opensource.org/licenses/LGPL-3.0) or it can be omitted.
 * `github_actions_ci`: Whether to add CI/CD workflows for Github Actions
 * `gitlab_ci`: Whether to add a CI workflow for GitLab CI
+* `notebooks`: Whether you want to use Jupyter Notebooks for documentation, demonstration
+  and testing purposes. Will automatically render an example notebook into your Sphinx
+  documentation and run it during test suite execution.
 * `commandlineinterface`: Whether the Package should have a CLI based on `click`.
 
 If you are using `cookiecutter-python-package` a lot, you can customize your default values
