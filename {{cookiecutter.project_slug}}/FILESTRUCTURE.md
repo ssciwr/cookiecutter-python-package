@@ -10,6 +10,11 @@ This is an explanation of the file structure that the cookiecutter generated for
 {%- endif %}
   * `tests/test_{{ cookiecutter|modname }}.py` contains the unit tests for the package.
   * `tests/conftest.py` contains testing setup and configuration for `pytest`
+{%- if cookiecutter.notebooks == "Yes" %}
+  * The `notebooks` directory contains an example Jupyter notebook on how to use `{{ cookiecutter|modname }}`.
+    This notebook is always executed during `pytest` execution and it is automatically
+    rendered into the Sphinx documentation.
+{%- endif %}
 * Markdown files with meta information on the project. [Markdown](https://www.markdownguide.org/basic-syntax/) is
   a good language for these files, as it is easy to write and rendered into something beautiful by your git repository
   hosting provider.

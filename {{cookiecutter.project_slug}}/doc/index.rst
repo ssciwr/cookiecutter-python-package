@@ -5,11 +5,11 @@
    :maxdepth: 2
    :caption: Contents:
 
-This is an example function:
-
-.. automodule:: {{ cookiecutter|modname }}
-    :members:
-
+    intro
+{%- if cookiecutter.notebooks %}
+    demo
+{%- endif %}
+    api
 
 Indices and tables
 ==================

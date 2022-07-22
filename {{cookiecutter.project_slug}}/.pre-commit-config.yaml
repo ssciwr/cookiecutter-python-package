@@ -19,3 +19,12 @@ repos:
       - id: check-toml
       # Unify file endings
       - id: end-of-file-fixer
+{% if cookiecutter.notebooks == "Yes" %}
+  # Make sure that Jupyter notebooks under version control
+  # have their outputs stripped before committing
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.5.0
+    hooks:
+      - id: nbstripout
+        files: ".ipynb"
+{% endif -%}

@@ -21,12 +21,14 @@ def test_with_remote(cookies):
 
 @pytest.mark.local
 @pytest.mark.parametrize("cli", ("Yes", "No"))
-def test_pytest_run(cookies, virtualenv, cli):
+@pytest.mark.parametrize("notebooks", ("Yes", "No"))
+def test_pytest_run(cookies, virtualenv, cli, notebooks):
     # Bake the project
     bake = cookies.bake(
         extra_context={
             'project_slug': 'test_project',
             'commandlineinterface': cli,
+            'notebooks': notebooks,
         }
     )
 
