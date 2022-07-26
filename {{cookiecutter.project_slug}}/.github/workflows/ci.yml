@@ -24,6 +24,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        # setuptools_scm requires a non-shallow clone of the repository
+        fetch-depth: 0
 
     - name: Set up Python ${{ "{{ matrix.python-version }}" }}
       uses: actions/setup-python@v4
@@ -56,6 +59,7 @@ jobs:
         python -m pip install .[tests]
 
     - name: Run Python tests
+      working-directory: ./tests
       run: |
         python -m pytest --cov --cov-report=xml
 

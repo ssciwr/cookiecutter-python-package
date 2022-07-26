@@ -1,10 +1,5 @@
-
-from importlib import metadata
-
-
-# Export the version defined in project metadata
-__version__ = metadata.version(__package__)
-del metadata
+# The version file is generated automatically by setuptools_scm
+from {{ cookiecutter|modname }}._version import version as __version__
 
 
 def add_one(x: int):
