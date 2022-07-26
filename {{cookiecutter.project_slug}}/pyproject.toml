@@ -3,7 +3,8 @@
 # introduce pyproject.toml
 [build-system]
 requires = [
-    "setuptools>=61",
+    "setuptools >=61",
+    "setuptools_scm >=7",
 ]
 build-backend = "setuptools.build_meta"
 
@@ -12,12 +13,12 @@ build-backend = "setuptools.build_meta"
 # single source of truth for {{ cookiecutter|modname }}'s version
 [project]
 name = "{{ cookiecutter|modname }}"
-version = "0.0.1"
 description = "Add short description here"
 readme = "README.md"
 maintainers = [
     { name = "{{ cookiecutter.full_name}}", email = "your@email.com" },
 ]
+dynamic = ["version"]
 requires-python = ">=3.8"
 {%- if cookiecutter.license != "None" %}
 license = { text = "{{ cookiecutter.license }}" }
@@ -74,6 +75,14 @@ docs = [
 packages = [
     "{{ cookiecutter|modname }}",
 ]
+
+# Configure setuptools_scm, which extracts the version number from
+# the version control system. For more information see its documentation:
+# https://github.com/pypa/setuptools_scm
+[tool.setuptools_scm]
+version_scheme = "post-release"
+local_scheme = "node-and-date"
+write_to = "{{ cookiecutter|modname }}/_version.py"
 
 # The following is the configuration for the pytest test suite
 [tool.pytest.ini_options]

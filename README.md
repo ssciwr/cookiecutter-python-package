@@ -7,8 +7,9 @@ the best practice guidelines of the [Scientific Software Center of Heidelberg Un
 # Features
 
 * Very simple, configurable setup of a fully functional project
-* Modern metadata specification using `pyproject.toml`
+* Modern build system metadata specification using `pyproject.toml` (PEP517 + PEP621)
 * Based on an established tool: [Cookiecutter](https://github.com/cookiecutter/cookiecutter) has >17k stars on Github!
+* Package versioning integrated with Git repository using `setuptools_scm`
 * CI/CD configurations using Github Actions or Gitlab CI
 * Sphinx documentation deployed to [readthedocs.org](https://readthedocs.org)
 

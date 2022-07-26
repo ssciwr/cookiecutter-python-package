@@ -32,7 +32,7 @@ class GitRepository(object):
             subprocess.check_call("git add *".split())
 
         subprocess.check_call(["git", "commit", "-m", "Initial Commit"])
-
+        subprocess.check_call(["git", "tag", "v0.0.1"])
 
     def add_remote(self, name, url):
         if self.remotes.get(name, url) != url:
