@@ -31,7 +31,7 @@
 
 ## Installation
 
-The Python packaage `{{ cookiecutter|modname }}` can be installed from PyPI:
+The Python package `{{ cookiecutter|modname }}` can be installed from PyPI:
 
 ```
 python -m pip install {{ cookiecutter|modname }}
