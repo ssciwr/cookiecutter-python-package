@@ -5,11 +5,11 @@
    :maxdepth: 2
    :caption: Contents:
 
-    intro
+   intro
 {%- if cookiecutter.notebooks %}
-    demo
+   demo
 {%- endif %}
-    api
+   api
 
 Indices and tables
 ==================
