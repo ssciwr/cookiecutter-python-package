@@ -65,9 +65,11 @@ conditional_remove("{{ cookiecutter.commandlineinterface }}" == "No", "tests/tes
 conditional_remove(os.stat("TODO.md").st_size == 0, "TODO.md")
 
 # Set up a Git repository
-{% if cookiecutter.remote_url != 'None' %}
 with GitRepository() as repo:
+{% if cookiecutter.remote_url != 'None' %}
     repo.add_remote("origin", "{{ cookiecutter.remote_url }}")
+{% else %}
+    pass
 {% endif %}
 
 # Print a message about success
