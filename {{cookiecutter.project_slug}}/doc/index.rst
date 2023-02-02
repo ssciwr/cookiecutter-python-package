@@ -5,11 +5,11 @@
    :maxdepth: 2
    :caption: Contents:
 
-    intro
-{%- if cookiecutter.notebooks %}
-    demo
+   intro
+{%- if cookiecutter.notebooks == "Yes" %}
+   demo
 {%- endif %}
-    api
+   api
 
 Indices and tables
 ==================

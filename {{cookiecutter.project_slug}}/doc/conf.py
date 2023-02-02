@@ -17,11 +17,11 @@ author = '{{ cookiecutter.full_name }}'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "m2r2",
 {%- if cookiecutter.notebooks == "Yes" %}
     "nbsphinx",
     "nbsphinx_link",
 {%- endif %}
+    "sphinx_mdinclude",
     "sphinx.ext.autodoc",
     "sphinx_rtd_theme",
 ]

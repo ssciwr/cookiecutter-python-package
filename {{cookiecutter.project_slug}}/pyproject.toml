@@ -54,12 +54,12 @@ docs = [
 {%- if cookiecutter.notebooks == "Yes" %}
     "ipykernel",
 {%- endif %}
-    "m2r2",
 {%- if cookiecutter.notebooks == "Yes" %}
     "nbsphinx",
     "nbsphinx-link",
 {%- endif %}
     "sphinx",
+    "sphinx_mdinclude",
     "sphinx_rtd_theme",
 ]
 {% if cookiecutter.commandlineinterface == "Yes" %}
