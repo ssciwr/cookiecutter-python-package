@@ -42,7 +42,7 @@ class PrecommitExtension(Extension):
 #
 
 def _modname(data):
-    return data["project_slug"].replace("-", "")
+    return data["project_slug"].replace("-", "_")
 
 
 def _is_github(data):
