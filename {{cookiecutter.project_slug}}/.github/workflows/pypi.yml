@@ -10,6 +10,8 @@ jobs:
   pypi-deploy:
     name: Deploying Python Package
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
 
     steps:
     - uses: actions/checkout@v3
@@ -23,7 +25,4 @@ jobs:
     - name: Build SDist
       run: pipx run build --sdist
 
-    - uses: pypa/gh-action-pypi-publish@master
-      with:
-        user: __token__
-        password: {% raw %}${{ secrets.PYPI_API_TOKEN }}{% endraw %}
+    - uses: pypa/gh-action-pypi-publish@v1
