@@ -1,6 +1,7 @@
+{%- if cookiecutter.version_management == "setuptools_scm" %}
 # Ignore setuptools_scm generated version file
 {{ cookiecutter|modname }}/_version.py
-
+{%- endif %}
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

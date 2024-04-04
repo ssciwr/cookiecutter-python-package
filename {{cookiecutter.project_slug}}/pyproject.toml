@@ -4,7 +4,9 @@
 [build-system]
 requires = [
     "setuptools >=61",
+{%- if cookiecutter.version_management == "setuptools_scm" %}
     "setuptools_scm >=7",
+{%- endif %}
 ]
 build-backend = "setuptools.build_meta"
 
@@ -18,7 +20,11 @@ readme = "README.md"
 maintainers = [
     { name = "{{ cookiecutter.full_name}}", email = "your@email.com" },
 ]
+{%- if cookiecutter.version_management == "setuptools_scm" %}
 dynamic = ["version"]
+{%- else %}
+version = "0.0.1"
+{%- endif %}
 requires-python = ">=3.8"
 {%- if cookiecutter.license != "None" %}
 license = { text = "{{ cookiecutter.license }}" }
@@ -75,6 +81,7 @@ docs = [
 packages = [
     "{{ cookiecutter|modname }}",
 ]
+{%- if cookiecutter.version_management == "setuptools_scm" %}
 
 # Configure setuptools_scm, which extracts the version number from
 # the version control system. For more information see its documentation:
@@ -83,6 +90,7 @@ packages = [
 version_scheme = "post-release"
 local_scheme = "node-and-date"
 write_to = "{{ cookiecutter|modname }}/_version.py"
+{%- endif %}
 
 # The following is the configuration for the pytest test suite
 [tool.pytest.ini_options]

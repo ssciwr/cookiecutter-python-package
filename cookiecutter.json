@@ -8,6 +8,7 @@
     "gitlab_ci": ["Yes", "No"],
     "notebooks": ["Yes", "No"],
     "commandlineinterface": ["No", "Yes"],
+    "version_management": ["manually", "setuptools_scm"],
     "_extensions": [
         "local_extensions.PrecommitExtension",
         "local_extensions.ShortcutExtension",
