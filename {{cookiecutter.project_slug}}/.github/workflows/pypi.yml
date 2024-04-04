@@ -15,9 +15,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+{%- if cookiecutter.version_management == "setuptools_scm" %}
       with:
-          # setuptools_scm requires a non-shallow clone of the repository
-          fetch-depth: 0
+        # setuptools_scm requires a non-shallow clone of the repository
+        fetch-depth: 0
+{%- endif %}
 
     - uses: actions/setup-python@v5
       name: Install Python
