@@ -51,10 +51,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Python ${{ "{{ matrix.python-version }}" }}
-      uses: actions/setup-python@v5
+    - uses: actions/setup-python@v5
       with:
-        python-version: "3.8"
+        python-version: "3.13"
 
     - name: Install Python package
       run: |
@@ -66,9 +65,7 @@ jobs:
         python -m pytest --cov --cov-report=xml
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v5
       with:
         fail_ci_if_error: true
         files: ./tests/coverage.xml
-      env:
-        CODECOV_TOKEN: ${{ "{{ secrets.CODECOV_TOKEN }}" }}
