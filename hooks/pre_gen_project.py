@@ -7,6 +7,7 @@
 
 import sys
 
+
 # Call fail_if with a Jinja template-based condition to abandon the
 # cookiecutter generation process with an error.
 def fail_if(condition, message):
