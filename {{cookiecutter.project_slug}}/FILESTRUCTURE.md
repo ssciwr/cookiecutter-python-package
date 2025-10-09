@@ -20,6 +20,7 @@ This is an explanation of the file structure that the cookiecutter generated for
   hosting provider.
   * `README.md` is the file that users will typically see first when discovering your project.
   * `COPYING.md` provides a list of copyright holders.
+  * `CITATION.cff` provides citation metadata so others know how to reference your project in publications.
 {%- if cookiecutter.license != "None" %}
   * `LICENSE.md` contains the license you selected.
 {%- endif %}
