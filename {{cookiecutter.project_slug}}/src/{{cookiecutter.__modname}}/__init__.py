@@ -1,6 +1,6 @@
 {%- if cookiecutter.version_management == "setuptools_scm" %}
 # The version file is generated automatically by setuptools_scm
-from {{ cookiecutter|modname }}._version import version as __version__
+from {{ cookiecutter|modname }}._version import version as __version__  # noqa: F401
 {%- else %}
 from importlib import metadata
 

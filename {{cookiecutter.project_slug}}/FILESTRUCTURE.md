@@ -1,9 +1,9 @@
 This is an explanation of the file structure that the cookiecutter generated for you:
 
 * Python source files:
-  * The Python package source files are located in the `{{ cookiecutter|modname }}` directory.
+  * The Python package source files are located in the `src/{{ cookiecutter|modname }}` directory.
 {%- if cookiecutter.commandlineinterface == "Yes" %}
-  * The file `{{ cookiecutter|modname }}.__main__.py` defines a command line interface that
+  * The file `src/{{ cookiecutter|modname }}.__main__.py` defines a command line interface that
     is accessible both as the command `{{ cookiecutter|modname }}` and via
     `python -m {{ cookiecutter|modname }}`.
   * `tests/test_cli.py` contains rudimentary testing of this CLI.
@@ -33,9 +33,6 @@ This is an explanation of the file structure that the cookiecutter generated for
   * `pyproject.toml` is the central place for configuration of your Python package.
     It contains the project metadata, setuptools-specific information and the configuration
     for your toolchain (like e.g. `pytest`).
-  * `setup.py` is still required for editable builds, but you should not need to change it.
-    In the future, `setuptools` will support editable builds purely from `pyproject.toml`
-    configuration.
 * Configuration for CI/Code Analysis and documentation services
 {%- if cookiecutter.github_actions_ci %}
   * `.github/workflows/ci.yml` describes the Github Workflow for Continuous

@@ -1,13 +1,16 @@
 repos:
-  # Run Black - the uncompromising Python code formatter
-  - repo: https://github.com/psf/black
-    rev: 23.7.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.4
     hooks:
-      - id: black-jupyter
+      # Run the linter
+      - id: ruff-check
+        args: [ --fix, --show-fixes ]
+      # Run the formatter
+      - id: ruff-format
 
   # Add some general purpose useful hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v6.0.0
     hooks:
       # Make sure that contained YAML files are well-formed
       - id: check-yaml
@@ -24,7 +27,7 @@ repos:
   # Make sure that Jupyter notebooks under version control
   # have their outputs stripped before committing
   - repo: https://github.com/kynan/nbstripout
-    rev: 0.6.1
+    rev: 0.8.1
     hooks:
       - id: nbstripout
         files: ".ipynb"
@@ -33,7 +36,7 @@ repos:
 
   # GitHub Actions Workflow linter
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.6.25
+    rev: v1.7.8
     hooks:
       - id: actionlint
 {%- endif %}

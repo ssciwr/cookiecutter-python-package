@@ -60,7 +60,7 @@ conditional_remove("{{ cookiecutter.gitlab_ci }}" == "No", ".gitlab-ci.yml")
 conditional_remove(not {{ have_precommit }}, ".pre-commit-config.yaml")
 conditional_remove("{{ cookiecutter.notebooks }}" == "No", "notebooks")
 conditional_remove("{{ cookiecutter.notebooks }}" == "No", "doc/demo.nblink")
-conditional_remove("{{ cookiecutter.commandlineinterface }}" == "No", "{{ cookiecutter|modname }}/__main__.py")
+conditional_remove("{{ cookiecutter.commandlineinterface }}" == "No", "src/{{ cookiecutter|modname }}/__main__.py")
 conditional_remove("{{ cookiecutter.commandlineinterface }}" == "No", "tests/test_cli.py")
 conditional_remove(os.stat("TODO.md").st_size == 0, "TODO.md")
 
