@@ -85,7 +85,7 @@ where = ["src"]
 [tool.setuptools_scm]
 version_scheme = "post-release"
 local_scheme = "node-and-date"
-write_to = "{{ cookiecutter|modname }}/_version.py"
+write_to = "src/{{ cookiecutter|modname }}/_version.py"
 {%- endif %}
 
 # The following is the configuration for the pytest test suite
