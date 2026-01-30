@@ -7,7 +7,7 @@
 
    intro
 {%- if cookiecutter.notebooks == "Yes" %}
-   demo
+   ../notebooks/demo.ipynb
 {%- endif %}
    api
 
