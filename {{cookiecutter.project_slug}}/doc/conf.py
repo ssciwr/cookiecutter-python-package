@@ -19,7 +19,6 @@ author = '{{ cookiecutter.full_name }}'
 extensions = [
 {%- if cookiecutter.notebooks == "Yes" %}
     "nbsphinx",
-    "nbsphinx_link",
 {%- endif %}
     "sphinx_mdinclude",
     "sphinx.ext.autodoc",

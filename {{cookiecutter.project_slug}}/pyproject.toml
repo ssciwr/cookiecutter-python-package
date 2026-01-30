@@ -60,7 +60,6 @@ docs = [
 {%- if cookiecutter.notebooks == "Yes" %}
     "ipykernel",
     "nbsphinx",
-    "nbsphinx-link",
 {%- endif %}
     "sphinx",
     "sphinx_mdinclude",
