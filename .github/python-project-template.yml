@@ -1,0 +1,11 @@
+default_context:
+    project_name: "Your Project"
+    remote_url: "None"
+    project_slug: "your-project"
+    full_name: "Your Name"
+    license: "MIT"
+    github_actions_ci: "Yes"
+    gitlab_ci: "No"
+    notebooks: "No"
+    commandlineinterface: "No"
+    version_management: "manually"
