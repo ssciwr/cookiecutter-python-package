@@ -3,7 +3,7 @@ name: Sync template repository
 on:
   push:
     branches:
-      - sync-project-template
+      - fix-pre-commit-config-generation
   workflow_dispatch:
     inputs:
       sync:
