@@ -3,7 +3,7 @@ name: Sync template repository
 on:
   push:
     branches:
-      - fix-pre-commit-config-generation
+      - main
   workflow_dispatch:
     inputs:
       sync:
@@ -48,7 +48,7 @@ jobs:
       uses: actions/checkout@v6
       with:
         repository: ssciwr/python-project-template
-        ref: sync-test
+        ref: main
         path: target-repository
         ssh-key: ${{ secrets.SSCIWR_PYTHON_PROJECT_TEMPLATE_DEPLOY_KEY }}
 
@@ -75,4 +75,4 @@ jobs:
         git commit -m "Sync from ssciwr/cookiecutter-python-project" || echo "No changes"
 
         echo "Pushing changes to target repository..."
-        git push origin sync-test
+        git push origin main
