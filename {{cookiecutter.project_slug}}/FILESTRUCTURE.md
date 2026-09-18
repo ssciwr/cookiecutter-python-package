@@ -2,7 +2,7 @@ This is an explanation of the file structure that the cookiecutter generated for
 
 * Python source files:
   * The Python package source files are located in the `src/{{ cookiecutter|modname }}` directory.
-{%- if cookiecutter.commandlineinterface == "Yes" %}
+{%- if cookiecutter.commandlineinterface %}
   * The file `src/{{ cookiecutter|modname }}.__main__.py` defines a command line interface that
     is accessible both as the command `{{ cookiecutter|modname }}` and via
     `python -m {{ cookiecutter|modname }}`.
@@ -10,7 +10,7 @@ This is an explanation of the file structure that the cookiecutter generated for
 {%- endif %}
   * `tests/test_{{ cookiecutter|modname }}.py` contains the unit tests for the package.
   * `tests/conftest.py` contains testing setup and configuration for `pytest`
-{%- if cookiecutter.notebooks == "Yes" %}
+{%- if cookiecutter.notebooks %}
   * The `notebooks` directory contains an example Jupyter notebook on how to use `{{ cookiecutter|modname }}`.
     This notebook is always executed during `pytest` execution and it is automatically
     rendered into the Sphinx documentation.

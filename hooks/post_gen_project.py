@@ -54,14 +54,14 @@ def conditional_remove(condition, path):
 
 
 conditional_remove("{{ cookiecutter.license }}" == "None", "LICENSE.md")
-conditional_remove("{{ cookiecutter.github_actions_ci }}" == "No", ".github")
-conditional_remove("{{ cookiecutter.github_actions_ci }}" == "No", "codecov.yml")
-conditional_remove("{{ cookiecutter.gitlab_ci }}" == "No", ".gitlab-ci.yml")
+conditional_remove(not {{ cookiecutter.github_actions_ci }}, ".github")
+conditional_remove(not {{ cookiecutter.github_actions_ci }}, "codecov.yml")
+conditional_remove(not {{ cookiecutter.gitlab_ci }}, ".gitlab-ci.yml")
 conditional_remove(not {{ have_precommit }}, ".pre-commit-config.yaml")
-conditional_remove("{{ cookiecutter.notebooks }}" == "No", "notebooks")
-conditional_remove("{{ cookiecutter.notebooks }}" == "No", "doc/demo.nblink")
-conditional_remove("{{ cookiecutter.commandlineinterface }}" == "No", "src/{{ cookiecutter|modname }}/__main__.py")
-conditional_remove("{{ cookiecutter.commandlineinterface }}" == "No", "tests/test_cli.py")
+conditional_remove(not {{ cookiecutter.notebooks }}, "notebooks")
+conditional_remove(not {{ cookiecutter.notebooks }}, "doc/demo.nblink")
+conditional_remove(not {{ cookiecutter.commandlineinterface }}, "src/{{ cookiecutter|modname }}/__main__.py")
+conditional_remove(not {{ cookiecutter.commandlineinterface }}, "tests/test_cli.py")
 conditional_remove(os.stat("TODO.md").st_size == 0, "TODO.md")
 
 # Set up a Git repository

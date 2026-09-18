@@ -1,7 +1,7 @@
 .template: &template
   script:
     - python -m pip install .[tests]
-    - python -m pytest{% if cookiecutter.notebooks == "Yes" %} --nbval{% endif %}
+    - python -m pytest{% if cookiecutter.notebooks %} --nbval{% endif %}
 
 test-{{ cookiecutter|modname }}-python3.10:
   image: python:3.10
@@ -10,4 +10,3 @@ test-{{ cookiecutter|modname }}-python3.10:
 test-{{ cookiecutter|modname }}-python3.13:
   image: python:3.13
   <<: *template
-

@@ -20,7 +20,7 @@ If your Python package contains compiled C++ modules, you might want to check ou
 In order to use Python Package Cookiecutter you need the following software installed:
 
 * Python `>= 3.10`
-* [Cookiecutter](https://github.com/cookiecutter/cookiecutter) e.g. by doing `pip install cookiecutter`.
+* [Cookiecutter](https://github.com/cookiecutter/cookiecutter) `>=2.7` e.g. by doing `pip install cookiecutter`.
 * Git `>= 1.8.2`
 
 # Using the Python Package Cookiecutter

@@ -1,4 +1,4 @@
-cookiecutter>=2.1
+cookiecutter>=2.7
 flaky
 pre-commit
 PyGithub

@@ -22,7 +22,7 @@ repos:
       - id: check-toml
       # Unify file endings
       - id: end-of-file-fixer
-{%- if cookiecutter.notebooks == "Yes" %}
+{%- if cookiecutter.notebooks %}
 
   # Make sure that Jupyter notebooks under version control
   # have their outputs stripped before committing
@@ -32,7 +32,7 @@ repos:
       - id: nbstripout
         files: ".ipynb"
 {%- endif %}
-{%- if cookiecutter.github_actions_ci == "Yes" %}
+{%- if cookiecutter.github_actions_ci %}
 
   # GitHub Actions Workflow linter
   - repo: https://github.com/rhysd/actionlint
