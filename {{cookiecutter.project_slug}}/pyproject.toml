@@ -43,7 +43,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-{%- if cookiecutter.commandlineinterface == "Yes" %}
+{%- if cookiecutter.commandlineinterface %}
     "click",
 {%- endif %}
 ]
@@ -52,12 +52,12 @@ dependencies = [
 tests = [
     "pytest",
     "pytest-cov",
-{%- if cookiecutter.notebooks == "Yes" %}
+{%- if cookiecutter.notebooks %}
     "nbval",
 {%- endif %}
 ]
 docs = [
-{%- if cookiecutter.notebooks == "Yes" %}
+{%- if cookiecutter.notebooks %}
     "ipykernel",
     "nbsphinx",
     "nbsphinx-link",
@@ -66,7 +66,7 @@ docs = [
     "sphinx_mdinclude",
     "sphinx_rtd_theme",
 ]
-{% if cookiecutter.commandlineinterface == "Yes" %}
+{% if cookiecutter.commandlineinterface %}
 # Command line scripts installed as part of the installation
 [project.scripts]
 {{ cookiecutter|modname }} = "{{ cookiecutter|modname }}.__main__:main"
@@ -92,7 +92,7 @@ write_to = "src/{{ cookiecutter|modname }}/_version.py"
 [tool.pytest.ini_options]
 testpaths = [
     "tests",
-{%- if cookiecutter.notebooks == "Yes" %}
+{%- if cookiecutter.notebooks %}
     "notebooks",
 {%- endif %}
 ]

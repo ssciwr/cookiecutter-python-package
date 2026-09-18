@@ -41,7 +41,7 @@ jobs:
 
     - name: Run Python tests
       run: |
-        python -m pytest{% if cookiecutter.notebooks == "Yes" %} --nbval{% endif %}
+        python -m pytest{% if cookiecutter.notebooks %} --nbval{% endif %}
 
   coverage:
     name: Coverage Testing

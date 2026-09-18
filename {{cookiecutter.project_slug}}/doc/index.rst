@@ -6,7 +6,7 @@
    :caption: Contents:
 
    intro
-{%- if cookiecutter.notebooks == "Yes" %}
+{%- if cookiecutter.notebooks %}
    demo
 {%- endif %}
    api

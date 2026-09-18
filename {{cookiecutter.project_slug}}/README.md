@@ -14,10 +14,10 @@
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 {% endif -%}
 {% if cookiecutter.remote_url != "None" -%}
-{% if cookiecutter.github_actions_ci == "Yes" and cookiecutter|is_github -%}
+{% if cookiecutter.github_actions_ci and cookiecutter|is_github -%}
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/{{ cookiecutter|username }}/{{ cookiecutter|remote_slug }}/ci.yml?branch=main)](https://github.com/{{ cookiecutter|username }}/{{ cookiecutter|remote_slug }}/actions/workflows/ci.yml)
 {% endif -%}
-{% if cookiecutter.gitlab_ci == "Yes" and cookiecutter|is_gitlab -%}
+{% if cookiecutter.gitlab_ci and cookiecutter|is_gitlab -%}
 [![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/{{ cookiecutter|username }}/{{ cookiecutter|remote_slug }}/main
 {%- if "gitlab.com" not in cookiecutter.remote_url -%}
 ?gitlab_url={{ cookiecutter|gitlab_instance }}

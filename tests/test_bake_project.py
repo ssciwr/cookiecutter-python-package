@@ -20,8 +20,8 @@ def test_with_remote(cookies):
 
 
 @pytest.mark.local
-@pytest.mark.parametrize("cli", ("Yes", "No"))
-@pytest.mark.parametrize("notebooks", ("Yes", "No"))
+@pytest.mark.parametrize("cli", (True, False))
+@pytest.mark.parametrize("notebooks", (True, False))
 @pytest.mark.parametrize("version_management", ("manually", "setuptools_scm"))
 def test_pytest_run(cookies, virtualenv, cli, notebooks, version_management):
     # Bake the project

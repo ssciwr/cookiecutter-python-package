@@ -3,16 +3,48 @@
     "remote_url": "None",
     "project_slug": "{%- if cookiecutter.remote_url == 'None' -%}{{ cookiecutter.project_name|replace('+', 'p')|slugify }}{% else %}{{ cookiecutter.remote_url.split('/')[-1]|replace('.git', '')}}{%- endif -%}",
     "full_name": "Your Name",
-    "license": ["MIT", "BSD-2", "GPL-3.0", "LGPL-3.0", "None"],
-    "github_actions_ci": ["Yes", "No"],
-    "gitlab_ci": ["Yes", "No"],
-    "notebooks": ["Yes", "No"],
-    "commandlineinterface": ["No", "Yes"],
-    "version_management": ["manually", "setuptools_scm"],
+    "license": [
+        "MIT",
+        "BSD-2",
+        "GPL-3.0",
+        "LGPL-3.0",
+        "None"
+    ],
+    "github_actions_ci": true,
+    "gitlab_ci": true,
+    "notebooks": true,
+    "commandlineinterface": false,
+    "version_management": [
+        "manually",
+        "setuptools_scm"
+    ],
     "_extensions": [
         "local_extensions.PrecommitExtension",
         "local_extensions.ShortcutExtension",
         "local_extensions.CurrentDateExtension"
     ],
-    "__modname": "{{ cookiecutter|modname }}"
+    "__modname": "{{ cookiecutter|modname }}",
+    "__prompts__": {
+        "project_name": "Project name",
+        "remote_url": "Git remote URL (None to configure it later)",
+        "project_slug": "Project directory name",
+        "full_name": "Author full name",
+        "license": {
+            "__prompt__": "Project license",
+            "MIT": "MIT",
+            "BSD-2": "BSD 2-Clause",
+            "GPL-3.0": "GNU GPL v3",
+            "LGPL-3.0": "GNU LGPL v3",
+            "None": "Do not add a license"
+        },
+        "github_actions_ci": "Add GitHub Actions CI?",
+        "gitlab_ci": "Add GitLab CI?",
+        "notebooks": "Add an example Jupyter notebook?",
+        "commandlineinterface": "Add a command-line interface?",
+        "version_management": {
+            "__prompt__": "Package version management",
+            "manually": "Set the version manually",
+            "setuptools_scm": "Derive the version from Git tags with setuptools-scm"
+        }
+    }
 }
